@@ -44,7 +44,7 @@ A program to parse flow log files and map them to tags based on a lookup table
 2. Replace your input log file and lookup_table as per above requirements or run the program with existing files in the folder.
 3. Run the program:
    ```
-    python parser.py
+    python log_parser.py
    ```
 4. Check the output.txt file for the output.
     
