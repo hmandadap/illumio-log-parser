@@ -11,8 +11,8 @@ def load_lookup_table(file_path):
         next(reader)
         for row in reader:
             dstport, protocol, tag = row
-            lookup_table[(int(dstport), protocol.lower())] = tag
-            
+            lookup_table[(int(dstport), protocol.lower())] = tag.lower()
+
     return lookup_table
 
 """
