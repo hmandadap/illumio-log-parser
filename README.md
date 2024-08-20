@@ -28,6 +28,7 @@ A program to parse flow log files and map them to tags based on a lookup table
    Format:
       ```plaintext
       <field_1> <field_2> <field_3> <dstport> <protocol> <field_6> <field_7>
+      ```
    **Headers:**
    - `dstport`: The destination port (e.g., 443, 80), found in the 4th field.
    - `protocol`: The protocol (e.g., tcp, udp), found in the 5th field.
