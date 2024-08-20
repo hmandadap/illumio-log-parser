@@ -4,7 +4,7 @@ A program to parse flow log files and map them to tags based on a lookup table
 ## Features  
 - Reads a lookup table in CSV format with columns for destination port, protocol, and tag.
 - Processes flow logs, matching each entry against the lookup table to determine the appropriate tag.
-- The program handles case insensitivity by converting the protocol field to lowercase before performing lookups.
+- The program handles case insensitivity by converting the protocol field and tag field to lowercase before performing lookups.
 - Generates an output file with counts of matches for each tag and each port/protocol combination.
 
 ## Requirements
@@ -22,13 +22,14 @@ A program to parse flow log files and map them to tags based on a lookup table
    - `dstport`: The destination port number (e.g., 25, 443).
    - `protocol`: The protocol used (e.g., `tcp`, `udp`).
    - `tag`: The tag associated with this port and protocol combination.
-- **logs.txt**: A text file containing flow log entries. Each line should have the following format:
-    Sample input line:
-    2 10.0.0.1 10.0.0.2 443 tcp 1234 ACCEPT OK
+- **logs.txt**: A text file containing flow log entries. Each line should have the following format:\
+    Sample input line:\
+    2 10.0.0.1 10.0.0.2 443 tcp 1234 ACCEPT OK\
    Format:
-      ```plaintext
-      <field_1> <field_2> <field_3> <dstport> <protocol> <field_6> <field_7>
       ```
+      <field_1> <field_2> <field_3> <dstport> <protocol> <field_6> <field_7>
+      ```\
+  \
    **Headers:**
    - `dstport`: The destination port (e.g., 443, 80), found in the 4th field.
    - `protocol`: The protocol (e.g., tcp, udp), found in the 5th field.
@@ -46,7 +47,6 @@ A program to parse flow log files and map them to tags based on a lookup table
     python parser.py
    ```
 4. Check the output.txt file for the output.
-   sample output in output.txt
     
 
 
