@@ -9,7 +9,7 @@ A program to parse flow log files and map them to tags based on a lookup table
 
 ## Requirements
 - Python 2.7
-- 1. **lookup_table.csv**: A CSV file containing the mapping of destination ports and protocols to tags. The format should be:
+- **lookup_table.csv**: A CSV file containing the mapping of destination ports and protocols to tags. The format should be:
 
       dstport,protocol,tag
       25,tcp,sv_P1
@@ -22,14 +22,13 @@ A program to parse flow log files and map them to tags based on a lookup table
    - `dstport`: The destination port number (e.g., 25, 443).
    - `protocol`: The protocol used (e.g., `tcp`, `udp`).
    - `tag`: The tag associated with this port and protocol combination.
-
-2. **logs.txt**: A text file containing flow log entries. Each line should have the following format:
+- **logs.txt**: A text file containing flow log entries. Each line should have the following format:
     Sample input line:
     2 10.0.0.1 10.0.0.2 443 tcp 1234 ACCEPT OK
    Format:
       ```plaintext
       <field_1> <field_2> <field_3> <dstport> <protocol> <field_6> <field_7>
-  **Headers:**
+   **Headers:**
    - `dstport`: The destination port (e.g., 443, 80), found in the 4th field.
    - `protocol`: The protocol (e.g., tcp, udp), found in the 5th field.
    - `tag`: The tag associated with this port and protocol combination.
@@ -46,20 +45,7 @@ A program to parse flow log files and map them to tags based on a lookup table
     python parser.py
    ```
 4. Check the output.txt file for the output.
-   sample output:
-      Tag Counts:
-      Tag     Count
-      Untagged        1
-      sv_p3   1
-      sv_p2   2
-      sv_p1   2
-      
-      Port/Protocol Combination Counts:
-      Port    Protocol        Count
-      80      tcp     1
-      23      tcp     1
-      25      tcp     1
-      31      udp     1
-      443     tcp     2
+   sample output in output.txt
+    
 
 
