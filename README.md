@@ -49,7 +49,7 @@ A program to parse flow log files and map them to tags based on a lookup table
    ```
 4. Check the output.txt file for the output.
 
-## Testing
+## Stress testing
 As per requirements this program should work well for:
    flow log file size upto 10 MB and lookup file upto 10000 mappings
    
@@ -70,5 +70,16 @@ As per requirements this program should work well for:
     python log_parser.py
    ```
 6. Verified that output.txt file has expected mappings.
+   
+## Other Tests Performed
+
+1. **Case Sensitivity**: 
+   - Verified that the protocol field and tag field is correctly handled in a case-insensitive manner. Example: assumed tcp aand TCP are same protocols and sv_p1 and SV_P1 are same tags.
+2. **Correct Tag Matching**:
+   - Ensured that tags from lookup_table.csv are matched exactly as provided.
+3. **Edge Cases**:
+   - Tested with flow log entries that have fewer than 5 fields to ensure the program skips these lines without crashing or throwing errors.
+   - Ports and protocols that do not exist in the lookup table, ensuring they are correctly marked as "Untagged."
+
 
 
