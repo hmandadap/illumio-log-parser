@@ -1,4 +1,4 @@
-# illumio-log-parser
+# Illumio-log-parser
 A program to parse flow log files and map them to tags based on a lookup table
 
 ## Features  
@@ -51,17 +51,14 @@ A program to parse flow log files and map them to tags based on a lookup table
 
 ## Testing
 As per requirements this program should work well for:
-   flow log file size upto 10 MB 
-   lookup file upto 10000 mappings
+   flow log file size upto 10 MB and lookup file upto 10000 mappings
    
 1. Created a python script called test_logs.py to generate a 10MB log file named logs_10mb.txt and lookup table with 10000 mappings named lookup_table_10000.csv
 2. Replaced paths for lookup file and logs_file in config.json
-   ```
-   {
+  ```
   "lookup_file": "lookup_table_10000.csv",
   "log_file": "logs_10mb.txt",
   "output_file": "output.txt"
-  }
   ```
 3. Run:
    ```
