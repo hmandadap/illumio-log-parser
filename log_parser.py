@@ -1,5 +1,16 @@
+import json
 import csv
 from collections import defaultdict
+
+
+"""
+Load configuration from the JSON file
+"""
+def load_config(config_file):
+    f = open(config_file)
+    config = json.load(f)
+    f.close()
+    return config
 
 """
 Loading the lookup_table to a dictionary
@@ -50,14 +61,14 @@ def write_output(tag_counts, port_protocol_counts, output_file):
         for (port, protocol), count in port_protocol_counts.items():
             outfile.write("{}\t{}\t{}\n".format(port, protocol, count))
 
-def main(lookup_file, log_file, output_file):
-    lookup_table = load_lookup_table(lookup_file)
-    tag_counts, port_protocol_counts = process_flow_logs(log_file, lookup_table)
-    write_output(tag_counts, port_protocol_counts, output_file)
+def main(config_file):
+    config = load_config(config_file)
+    lookup_table = load_lookup_table(config["lookup_file"])
+    tag_counts, port_protocol_counts = process_flow_logs(config["log_file"], lookup_table)
+    write_output(tag_counts, port_protocol_counts, config["output_file"])
 
 if __name__ == "__main__":
-    lookup_file = 'lookup_table.csv'  # Path to your lookup table file
-    log_file = 'logs.txt'             # Path to your flow log file
-    output_file = 'output.txt'        # Path to your output file
+
+    config_file = 'config.json'  # Path to your configuration file
     
-    main(lookup_file, log_file, output_file)
+    main(config_file)
