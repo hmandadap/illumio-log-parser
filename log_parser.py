@@ -12,6 +12,7 @@ def load_config(config_file):
     f.close()
     return config
 
+
 """
 Loading the lookup_table to a dictionary
 """
@@ -25,6 +26,7 @@ def load_lookup_table(file_path):
             lookup_table[(int(dstport), protocol.lower())] = tag.lower()
 
     return lookup_table
+
 
 """
 Parsing the log_file by each row
@@ -46,6 +48,7 @@ def process_flow_logs(log_file, lookup_table):
 
     return tag_counts, port_protocol_counts
 
+
 """
 Writing to the output file
 """
@@ -61,11 +64,13 @@ def write_output(tag_counts, port_protocol_counts, output_file):
         for (port, protocol), count in port_protocol_counts.items():
             outfile.write("{}\t{}\t{}\n".format(port, protocol, count))
 
+
 def main(config_file):
     config = load_config(config_file)
     lookup_table = load_lookup_table(config["lookup_file"])
     tag_counts, port_protocol_counts = process_flow_logs(config["log_file"], lookup_table)
     write_output(tag_counts, port_protocol_counts, config["output_file"])
+
 
 if __name__ == "__main__":
 
