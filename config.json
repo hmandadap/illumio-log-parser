@@ -1,0 +1,5 @@
+{
+  "lookup_file": "lookup_table.csv",
+  "log_file": "logs.txt",
+  "output_file": "output.txt"
+}
