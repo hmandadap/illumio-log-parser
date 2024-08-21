@@ -6,6 +6,7 @@ A program to parse flow log files and map them to tags based on a lookup table
 - Processes flow logs, matching each entry against the lookup table to determine the appropriate tag.
 - The program handles case insensitivity by converting the protocol field and tag field to lowercase before performing lookups.
 - Generates an output file with counts of matches for each tag and each port/protocol combination.
+- Tested to work for flow log file size up to 10 MB and lookup file up to 10000 mappings. 
 
 ## Requirements
 - Python 2.7
@@ -41,12 +42,36 @@ A program to parse flow log files and map them to tags based on a lookup table
    git clone https://github.com/hmandadap/illumio-log-parser.git
    cd illumio-log-parser
    ```
-2. Replace your input log file and lookup_table as per above requirements or run the program with existing files in the folder.
+2. Replace your input log file and lookup_table paths in config.json as per above requirements or run the program with existing values.
 3. Run the program:
    ```
     python log_parser.py
    ```
 4. Check the output.txt file for the output.
-    
+
+## Testing
+As per requirements this program should work well for:
+   flow log file size upto 10 MB 
+   lookup file upto 10000 mappings
+   
+1. Created a python script called test_logs.py to generate a 10MB log file named logs_10mb.txt and lookup table with 10000 mappings named lookup_table_10000.csv
+2. Replaced paths for lookup file and logs_file in config.json
+   ```
+   {
+  "lookup_file": "lookup_table_10000.csv",
+  "log_file": "logs_10mb.txt",
+  "output_file": "output.txt"
+  }
+  ```
+3. Run:
+   ```
+    python test_logs.py
+   ```
+4. Verified that files are created.
+5.  Ran the program:
+   ```
+    python log_parser.py
+   ```
+6. Verified that output.txt file has expected mappings.
 
 
