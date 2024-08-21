@@ -77,3 +77,4 @@ if __name__ == "__main__":
     config_file = 'config.json'  # Path to your configuration file
     
     main(config_file)
+    
